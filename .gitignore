@@ -9,6 +9,8 @@
 #
 # Normal rules
 #
+dt.img
+boot.img
 .*
 *.o
 *.o.*
