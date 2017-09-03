@@ -29,7 +29,9 @@
 #include <linux/of_device.h>
 #include <linux/of_gpio.h>
 #include <linux/printk.h>
-
+#ifdef CONFIG_FORCE_FAST_CHARGE
+#include <linux/fastchg.h>
+#endif
 /* Register definitions */
 #define CHG_CURRENT_REG			0x00	/* Non-Volatile + mirror */
 #define CHG_OTHER_CURRENT_REG		0x01	/* Non-Volatile + mirror */
