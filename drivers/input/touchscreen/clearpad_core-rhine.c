@@ -4312,6 +4312,8 @@ static int __devinit clearpad_probe(struct platform_device *pdev)
 
 	/* sysfs */
 	rc = create_sysfs_entries(this);
+	if (rc)
+		goto err_input_device_pen;
 
 #ifdef CONFIG_DEBUG_FS
 	/* debugfs */
@@ -4357,6 +4359,8 @@ err_sysfs_remove_group:
 	debugfs_remove_recursive(this->debugfs);
 #endif
 	remove_sysfs_entries(this);
+err_input_device_pen:
+	input_unregister_device(this->input_pen);
 
 err_input_device:
 #ifdef CONFIG_FB
